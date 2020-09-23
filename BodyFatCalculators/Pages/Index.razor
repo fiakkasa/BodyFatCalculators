@@ -1,0 +1,134 @@
+﻿@page "/"
+
+<style type="text/css">
+    .index {
+        width: 40rem;
+        min-width: 20rem;
+    }
+</style>
+
+<div class="index card mw-100 mx-auto mb-5">
+    <div class="card-body">
+        <h5 class="card-title">Body Fat Calculator</h5>
+        <div class="card-text">
+            <label>Gender</label>
+            <div class="mb-3">
+                <div class="btn-group" role="group" aria-label="Gender">
+                    <button type="button"
+                            class="btn @(Male ? "btn-secondary" : "btn-light")"
+                            aria-label="Male"
+                            @onclick="() => { Male = true; }">
+                        Male
+                    </button>
+                    <button type="button"
+                            class="btn  @(!Male ? "btn-secondary" : "btn-light")"
+                            aria-label="Female"
+                            @onclick="() => { Male = false; }">
+                        Female
+                    </button>
+                </div>
+            </div>
+
+            <label>Height (cm)</label>
+            <div class="input-group mb-3">
+                <input type="number"
+                       class="form-control @(HeightCmValid ? "is-valid" : "is-invalid")"
+                       placeholder="Height (cm)"
+                       aria-label="Height (cm)"
+                       min="@HeightMinMax.min"
+                       max="@HeightMinMax.max"
+                       @bind="HeightCm"
+                       @bind:event="oninput" />
+            </div>
+
+            <label>Naval (cm)</label>
+            <div class="input-group mb-3">
+                <input type="number"
+                       class="form-control @(NavalCmValid ? "is-valid" : "is-invalid")"
+                       placeholder="Naval (cm)"
+                       aria-label="Naval (cm)"
+                       min="@NavalMinMax.min"
+                       max="@NavalMinMax.max"
+                       @bind="NavalCm"
+                       @bind:event="oninput" />
+            </div>
+
+            <label>Neck (cm)</label>
+            <div class="input-group mb-3">
+                <input type="number"
+                       class="form-control @(NeckCmValid ? "is-valid" : "is-invalid")"
+                       placeholder="Neck (cm)"
+                       aria-label="Neck (cm)"
+                       min="@NeckMinMax.min"
+                       max="@NeckMinMax.max"
+                       @bind="NeckCm"
+                       @bind:event="oninput" />
+            </div>
+
+            @if (!Male)
+            {
+                <label>Hips (cm)</label>
+                <div class="input-group mb-3">
+                    <input type="number"
+                           class="form-control @(HipsCmValid ? "is-valid" : "is-invalid")"
+                           placeholder="Neck (cm)"
+                           aria-label="Neck (cm)"
+                           min="@HipsMinMax.min"
+                           max="@HipsMinMax.max"
+                           @bind="HipsCm"
+                           @bind:event="oninput" />
+                </div>
+            }
+
+            <h5 class="m-0 py-1 text-dark">
+                @string.Format("Fat: {0:P2}", FatPercentage)
+            </h5>
+        </div>
+    </div>
+</div>
+
+@code {
+    public (int min, int max) HeightMinMax => (min: 50, max: 300);
+
+    public double HeightCm { get; set; }
+
+    public bool HeightCmValid => HeightCm >= HeightMinMax.min && HeightCm <= HeightMinMax.max;
+
+    public (int min, int max) NavalMinMax => (min: 50, max: 300);
+
+    public double NavalCm { get; set; }
+
+    public bool NavalCmValid => NavalCm >= NavalMinMax.min && NavalCm <= NavalMinMax.max;
+
+    public (int min, int max) NeckMinMax => (min: 10, max: 100);
+
+    public double NeckCm { get; set; }
+
+    public bool NeckCmValid => NeckCm >= NeckMinMax.min && NeckCm <= NeckMinMax.max;
+
+    public (int min, int max) HipsMinMax => (min: 50, max: 300);
+
+    public double HipsCm { get; set; }
+
+    public bool HipsCmValid => HipsCm >= HipsMinMax.min && NavalCm <= HipsMinMax.max;
+
+    public bool Male { get; set; } = true;
+
+    public double FatPercentage
+    {
+        get
+        {
+            var result = 0d;
+
+            if (HeightCmValid && NavalCmValid && NeckCmValid)
+                result =
+                    Male
+                    ? (495 / (1.0324 - 0.19077 * (Math.Log10(NavalCm - NeckCm)) + 0.15456 * (Math.Log10(HeightCm))) - 450) / 100
+                    : HipsCmValid
+                        ? (495 / (1.29579 - 0.35004 * (Math.Log10(NavalCm + HipsCm - NeckCm)) + 0.221 * (Math.Log10(HeightCm))) - 450) / 100
+                        : 0;
+
+            return result > 0 && result < 100 ? result : 0;
+        }
+    }
+}
