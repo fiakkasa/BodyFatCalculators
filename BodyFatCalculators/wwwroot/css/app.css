@@ -1,17 +1,25 @@
-﻿body {
+﻿app {
     background-image: url(images/wallpaper.jpg);
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
-app > .spinner-border-container {
+.spinner-border-container {
     border-radius: 50%;
 }
 
-app > .spinner-border-container > .spinner-border {
-    height: 3rem;
-    width: 3rem;
+     .spinner-border-container > .spinner-border {
+        height: 3rem;
+        width: 3rem;
+    }
+
+.min-height-100vh {
+    min-height: 100vh;
+}
+
+.main {
+    min-width: 20rem;
 }
 
 #blazor-error-ui {
@@ -27,9 +35,9 @@ app > .spinner-border-container > .spinner-border {
     z-index: 1000;
 }
 
-#blazor-error-ui .dismiss {
-    cursor: pointer;
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
-}
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
