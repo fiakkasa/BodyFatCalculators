@@ -1,0 +1,102 @@
+﻿<label>
+    @localizer["Gender"]
+</label>
+<div class="mb-3">
+    <div class="btn-group" role="group" aria-label="Gender">
+        <button type="button"
+                class="btn @(Model.Male ? "btn-secondary" : "btn-light")"
+                aria-label="Male"
+                @onclick="() => { Model.Male = true; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
+            @localizer["Male"]
+        </button>
+        <button type="button"
+                class="btn  @(!Model.Male ? "btn-secondary" : "btn-light")"
+                aria-label="Female"
+                @onclick="() => { Model.Male = false; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
+            @localizer["Female"]
+        </button>
+    </div>
+</div>
+
+<label>
+    @localizer["Height (cm)"]
+</label>
+<div class="input-group mb-3">
+    <input type="number"
+           class="form-control @(Model.HeightCmValid ? "is-valid" : "is-invalid")"
+           placeholder="@localizer["Height (cm)"]"
+           aria-label="@localizer["Height (cm)"]"
+           min="@Model.HeightCmMinMax.min"
+           max="@Model.HeightCmMinMax.max"
+           @bind="Model.HeightCm"
+           @bind:event="oninput"
+           @onchange="() => ModelChanged.InvokeAsync(Model)" />
+</div>
+
+<label>
+    @localizer["Naval (cm)"]
+</label>
+<div class="input-group mb-3">
+    <input type="number"
+           class="form-control @(Model.NavalCmValid ? "is-valid" : "is-invalid")"
+           placeholder="@localizer["Naval (cm)"]"
+           aria-label="@localizer["Naval (cm)"]"
+           min="@Model.NavalCmMinMax.min"
+           max="@Model.NavalCmMinMax.max"
+           @bind="Model.NavalCm"
+           @bind:event="oninput"
+           @onchange="() => ModelChanged.InvokeAsync(Model)" />
+</div>
+
+<label>
+    @localizer["Neck (cm)"]
+</label>
+<div class="input-group mb-3">
+    <input type="number"
+           class="form-control @(Model.NeckCmValid ? "is-valid" : "is-invalid")"
+           placeholder="@localizer["Neck (cm)"]"
+           aria-label="@localizer["Neck (cm)"]"
+           min="@Model.NeckMinMax.min"
+           max="@Model.NeckMinMax.max"
+           @bind="Model.NeckCm"
+           @bind:event="oninput"
+           @onchange="() => ModelChanged.InvokeAsync(Model)" />
+</div>
+
+@if (!Model.Male)
+{
+    <label>
+        @localizer["Hips (cm)"]
+    </label>
+    <div class="input-group mb-3">
+        <input type="number"
+               class="form-control @(Model.HipsCmValid ? "is-valid" : "is-invalid")"
+               placeholder="@localizer["Hips (cm)"]"
+               aria-label="@localizer["Hips (cm)"]"
+               min="@Model.HipsCmMinMax.min"
+               max="@Model.HipsCmMinMax.max"
+               @bind="Model.HipsCm"
+               @bind:event="oninput"
+               @onchange="() => ModelChanged.InvokeAsync(Model)" />
+    </div>
+}
+
+<h5 class="m-0 py-1 text-dark">
+    @string.Format("{0}: {1:P2}", localizer["Fat"], Model.FatPercentage)
+</h5>
+
+@code {
+    [Parameter] public bool? Male { get; set; }
+
+    [Parameter] public EventCallback<bool> MaleChanged { get; set; }
+
+    [Parameter] public USNavyModel Model { get; set; } = new USNavyModel();
+
+    [Parameter] public EventCallback<USNavyModel> ModelChanged { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (Male.HasValue) Model.Male = Male.Value;
+        base.OnParametersSet();
+    }
+}

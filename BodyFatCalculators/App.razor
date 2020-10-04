@@ -4,7 +4,13 @@
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@localizer["404"]</h5>
+                    <p class="card-text">@localizer["Sorry, there's nothing at this address..."]</p>
+                    <a href="/" class="card-link">@localizer["Go Home?"]</a>
+                </div>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>

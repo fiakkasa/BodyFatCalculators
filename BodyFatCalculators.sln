@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BodyFatCalculators", "BodyFatCalculators\BodyFatCalculators.csproj", "{5CEBBEA6-8D48-4841-BE48-A79BE4271207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BodyFatCalculators", "BodyFatCalculators\BodyFatCalculators.csproj", "{5CEBBEA6-8D48-4841-BE48-A79BE4271207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
