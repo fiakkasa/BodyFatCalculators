@@ -79,11 +79,29 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acceptable.
+        /// </summary>
+        public static string Acceptable {
+            get {
+                return ResourceManager.GetString("Acceptable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age.
         /// </summary>
         public static string Age {
             get {
                 return ResourceManager.GetString("Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Athletes.
+        /// </summary>
+        public static string Athletes {
+            get {
+                return ResourceManager.GetString("Athletes", resourceCulture);
             }
         }
         
@@ -97,6 +115,15 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Body Fat Percentages.
+        /// </summary>
+        public static string Body_Fat_Percentages {
+            get {
+                return ResourceManager.GetString("Body Fat Percentages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chest (mm).
         /// </summary>
         public static string Chest__mm_ {
@@ -106,11 +133,38 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Essential Fat.
+        /// </summary>
+        public static string Essential_Fat {
+            get {
+                return ResourceManager.GetString("Essential Fat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fat.
         /// </summary>
         public static string Fat {
             get {
                 return ResourceManager.GetString("Fat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fitness.
+        /// </summary>
+        public static string Fitness {
+            get {
+                return ResourceManager.GetString("Fitness", resourceCulture);
             }
         }
         
@@ -169,6 +223,15 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Men.
+        /// </summary>
+        public static string Men {
+            get {
+                return ResourceManager.GetString("Men", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Naval (cm).
         /// </summary>
         public static string Naval__cm_ {
@@ -183,6 +246,15 @@ namespace BodyFatCalculators.Resources {
         public static string Neck__cm_ {
             get {
                 return ResourceManager.GetString("Neck (cm)", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obese.
+        /// </summary>
+        public static string Obese {
+            get {
+                return ResourceManager.GetString("Obese", resourceCulture);
             }
         }
         
@@ -219,6 +291,15 @@ namespace BodyFatCalculators.Resources {
         public static string USNavy {
             get {
                 return ResourceManager.GetString("USNavy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Women.
+        /// </summary>
+        public static string Women {
+            get {
+                return ResourceManager.GetString("Women", resourceCulture);
             }
         }
     }

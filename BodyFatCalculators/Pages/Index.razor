@@ -10,11 +10,11 @@
     <div class="card-body">
         <h5 class="card-title">@localizer["Body Fat Calculator"]</h5>
         <div class="card-text">
-            <div class="btn-group d-flex mb-2" role="group">
+            <div class="d-flex flex-wrap mb-2" role="group">
                 @foreach (var item in Tabs)
                 {
                     <button type="button"
-                            class="btn @(item == ActiveTab ? "btn-primary" : "btn-light text-dark")"
+                            class="flex-fill btn text-truncate @(item == ActiveTab ? "btn-primary" : "btn-light text-dark")"
                             @onclick="() => { ActiveTab = item; }">
                         @localizer[item]
                     </button>
@@ -29,6 +29,9 @@
                 case "JacksonAndPollock3SiteSkinFold":
                     <JacksonAndPollock3SiteSkinFoldComponent @bind-Male="Male" />
                     break;
+                case "Body Fat Percentages":
+                    <FatPercentageTableComponent />
+                    break;
             }
         </div>
     </div>
@@ -37,14 +40,12 @@
 @code {
     private bool Male { get; set; } = true;
 
-    private List<string> Tabs { get; set; } =
-        new[]
-        {
-            nameof(USNavyModel),
-            nameof(JacksonAndPollock3SiteSkinFoldModel)
-                }
-        .Select(x => x.Replace("Model", ""))
-        .ToList();
+    private List<string> Tabs { get; set; } = new List<string> {
+        "USNavy",
+        "JacksonAndPollock3SiteSkinFold",
+        "Body Fat Percentages"
+    };
+
     private string ActiveTab { get; set; } = "";
 
     protected override void OnInitialized()

@@ -123,17 +123,35 @@
   <data name="Abdomen (mm)" xml:space="preserve">
     <value>Abdomen (mm)</value>
   </data>
+  <data name="Acceptable" xml:space="preserve">
+    <value>Acceptable</value>
+  </data>
   <data name="Age" xml:space="preserve">
     <value>Age</value>
+  </data>
+  <data name="Athletes" xml:space="preserve">
+    <value>Athletes</value>
   </data>
   <data name="Body Fat Calculator" xml:space="preserve">
     <value>Body Fat Calculator</value>
   </data>
+  <data name="Body Fat Percentages" xml:space="preserve">
+    <value>Body Fat Percentages</value>
+  </data>
   <data name="Chest (mm)" xml:space="preserve">
     <value>Chest (mm)</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Essential Fat" xml:space="preserve">
+    <value>Essential Fat</value>
+  </data>
   <data name="Fat" xml:space="preserve">
     <value>Fat</value>
+  </data>
+  <data name="Fitness" xml:space="preserve">
+    <value>Fitness</value>
   </data>
   <data name="Gender" xml:space="preserve">
     <value>Gender</value>
@@ -153,11 +171,17 @@
   <data name="JacksonAndPollock3SiteSkinFold" xml:space="preserve">
     <value>Caliper (3 Site)</value>
   </data>
+  <data name="Men" xml:space="preserve">
+    <value>Men</value>
+  </data>
   <data name="Naval (cm)" xml:space="preserve">
     <value>Naval (cm)</value>
   </data>
   <data name="Neck (cm)" xml:space="preserve">
     <value>Neck (cm)</value>
+  </data>
+  <data name="Obese" xml:space="preserve">
+    <value>Obese</value>
   </data>
   <data name="Sorry, there's nothing at this address..." xml:space="preserve">
     <value>Sorry, there's nothing at this address...</value>
@@ -170,5 +194,8 @@
   </data>
   <data name="USNavy" xml:space="preserve">
     <value>US Navy</value>
+  </data>
+  <data name="Women" xml:space="preserve">
+    <value>Women</value>
   </data>
 </root>
