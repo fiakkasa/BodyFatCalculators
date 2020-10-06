@@ -83,7 +83,11 @@
 
 <h5 class="m-0 py-1 text-dark">
     @string.Format("{0}: {1:P2}", localizer["Fat"], Model.FatPercentage)
+    <small>
+        <FatPercentageBracketComponent Male="@Model.Male" FatPercentage="@Model.FatPercentage" />
+    </small>
 </h5>
+
 
 @code {
     [Parameter] public bool? Male { get; set; }

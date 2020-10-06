@@ -1,0 +1,36 @@
+﻿@if (GetFatPercentageBracket(Male, FatPercentage) is string bracket && bracket != "")
+{
+    @localizer[bracket]
+}
+
+@code {
+    [Parameter] public bool Male { get; set; }
+
+    [Parameter] public double FatPercentage { get; set; }
+
+    private Dictionary<string, (double maleMin, double maleMax, double femaleMin, double femaleMax)> FatPercentageTable { get; set; } =
+       new Dictionary<string, (double maleMin, double maleMax, double femaleMin, double femaleMax)>
+       {
+           ["Essential Fat"] = (maleMin: 2, maleMax: 5, femaleMin: 10, femaleMax: 13),
+           ["Athlete"] = (maleMin: 6, maleMax: 13, femaleMin: 14, femaleMax: 20),
+           ["Fitness"] = (maleMin: 14, maleMax: 17, femaleMin: 21, femaleMax: 24),
+           ["Acceptable"] = (maleMin: 18, maleMax: 24, femaleMin: 25, femaleMax: 31),
+           ["Obese"] = (maleMin: 25, maleMax: 1000, femaleMin: 32, femaleMax: 1000),
+       };
+
+    private string GetFatPercentageBracket(bool male, double fatPercentage) =>
+       Math.Floor(fatPercentage * 100) is double percentage &&
+       FatPercentageTable
+           .Where(x =>
+           {
+               var (maleMin, maleMax, femaleMin, femaleMax) = x.Value;
+
+               return male
+                   ? percentage >= maleMin && percentage <= maleMax
+                   : percentage >= femaleMin && percentage <= femaleMax;
+           })
+           .Select(x => x.Key)
+           .FirstOrDefault() is string bracket
+       ? bracket
+       : "";
+}

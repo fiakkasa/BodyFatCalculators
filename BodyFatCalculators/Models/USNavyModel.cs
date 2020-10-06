@@ -34,32 +34,42 @@ namespace BodyFatCalculators.Models
         {
             get
             {
-                var result = Male switch
-                {
-                    true when HeightCmValid && NavalCmValid && NeckCmValid =>
-                    (
-                        495 /
-                        (
-                            1.0324
-                            - 0.19077 * Math.Log10(NavalCm - NeckCm)
-                            + 0.15456 * Math.Log10(HeightCm)
-                        )
-                        - 450
-                    ),
-                    false when HeightCmValid && NavalCmValid && NeckCmValid && HipsCmValid =>
-                    (
-                        495 /
-                        (
-                            1.29579
-                            - 0.35004 * Math.Log10(NavalCm + HipsCm - NeckCm)
-                            + 0.221 * Math.Log10(HeightCm)
-                        )
-                        - 450
-                    ),
-                    _ => 0d
-                } / 100;
+                var result =
+                    Math.Round(
+                        Male switch
+                        {
+                            true when HeightCmValid && NavalCmValid && NeckCmValid =>
+                            (
+                                495 /
+                                (
+                                    1.0324
+                                    - 0.19077 * Math.Log10(NavalCm - NeckCm)
+                                    + 0.15456 * Math.Log10(HeightCm)
+                                )
+                                - 450
+                            ),
+                            false when HeightCmValid && NavalCmValid && NeckCmValid && HipsCmValid =>
+                            (
+                                495 /
+                                (
+                                    1.29579
+                                    - 0.35004 * Math.Log10(NavalCm + HipsCm - NeckCm)
+                                    + 0.221 * Math.Log10(HeightCm)
+                                )
+                                - 450
+                            ),
+                            _ => 0d
+                        } / 100,
+                        4
+                    );
 
-                return result > 0 && result < 100 ? result : 0;
+                return result switch
+                {
+                    _ when result > 0 && result < 1 => result,
+                    _ when result >= 1 => 1,
+                    _ when result <= 0 => 0,
+                    _ => 0
+                };
             }
         }
     }

@@ -108,7 +108,7 @@ else
            placeholder="@localizer["Thigh (mm)"]"
            aria-label="@localizer["Thigh (mm)"]"
            min="@Model.ThighMmMinMax.min"
-           max="@Model.ThighMmMinMax.min"
+           max="@Model.ThighMmMinMax.max"
            @bind="Model.ThighMm"
            @bind:event="oninput"
            @onchange="() => ModelChanged.InvokeAsync(Model)" />
@@ -117,6 +117,9 @@ else
 
 <h5 class="m-0 py-1 text-dark">
     @string.Format("{0}: {1:P2}", localizer["Fat"], Model.FatPercentage)
+    <small>
+        <FatPercentageBracketComponent Male="@Model.Male" FatPercentage="@Model.FatPercentage" />
+    </small>
 </h5>
 
 @code {

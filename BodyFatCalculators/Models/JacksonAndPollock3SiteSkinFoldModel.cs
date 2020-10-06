@@ -48,34 +48,44 @@ namespace BodyFatCalculators.Models
             {
                 if (!AgeValid) return 0;
 
-                var result = Male switch
-                {
-                    true when ChestMmValid && AbdomenMmValid && ThighMmValid =>
-                    (
-                        495 /
-                        (
-                            1.10938
-                            - (0.0008267 * (ChestMm + AbdomenMm + ThighMm))
-                            + (0.0000016 * Math.Pow(ChestMm + AbdomenMm + ThighMm, 2))
-                            - (0.0002574 * Age)
-                        )
-                        - 450
-                    ),
-                    false when HipMmValid && TricepMmValid && ThighMmValid =>
-                    (
-                        495 /
-                        (
-                           1.089733
-                            - (0.0009245 * (HipMm + TricepMm + ThighMm))
-                            + (0.0000025 * Math.Pow(HipMm + TricepMm + ThighMm, 2))
-                            - (0.0000979 * Age)
-                        )
-                        - 450
-                    ),
-                    _ => 0d
-                } / 100;
+                var result =
+                    Math.Round(
+                        Male switch
+                        {
+                            true when ChestMmValid && AbdomenMmValid && ThighMmValid =>
+                            (
+                                495 /
+                                (
+                                    1.10938
+                                    - (0.0008267 * (ChestMm + AbdomenMm + ThighMm))
+                                    + (0.0000016 * Math.Pow(ChestMm + AbdomenMm + ThighMm, 2))
+                                    - (0.0002574 * Age)
+                                )
+                                - 450
+                            ),
+                            false when HipMmValid && TricepMmValid && ThighMmValid =>
+                            (
+                                495 /
+                                (
+                                   1.089733
+                                    - (0.0009245 * (HipMm + TricepMm + ThighMm))
+                                    + (0.0000025 * Math.Pow(HipMm + TricepMm + ThighMm, 2))
+                                    - (0.0000979 * Age)
+                                )
+                                - 450
+                            ),
+                            _ => 0d
+                        } / 100,
+                        4
+                    );
 
-                return result > 0 && result < 100 ? result : 0;
+                return result switch
+                {
+                    _ when result > 0 && result < 1 => result,
+                    _ when result >= 1 => 1,
+                    _ when result <= 0 => 0,
+                    _ => 0
+                };
             }
         }
     }

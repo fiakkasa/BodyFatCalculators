@@ -129,8 +129,8 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
-  <data name="Athletes" xml:space="preserve">
-    <value>Athletes</value>
+  <data name="Athlete" xml:space="preserve">
+    <value>Athlete</value>
   </data>
   <data name="Body Fat Calculator" xml:space="preserve">
     <value>Body Fat Calculator</value>

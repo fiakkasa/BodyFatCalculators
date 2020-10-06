@@ -97,11 +97,11 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Athletes.
+        ///   Looks up a localized string similar to Athlete.
         /// </summary>
-        public static string Athletes {
+        public static string Athlete {
             get {
-                return ResourceManager.GetString("Athletes", resourceCulture);
+                return ResourceManager.GetString("Athlete", resourceCulture);
             }
         }
         
