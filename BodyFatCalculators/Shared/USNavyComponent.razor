@@ -2,16 +2,16 @@
     @localizer["Gender"]
 </label>
 <div class="mb-3">
-    <div class="btn-group" role="group" aria-label="Gender">
+    <div class="btn-group" role="group" aria-label="@localizer["Gender"]">
         <button type="button"
                 class="btn @(Model.Male ? "btn-secondary" : "btn-light")"
-                aria-label="Male"
+                aria-label="@localizer["Male"]"
                 @onclick="() => { Model.Male = true; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
             @localizer["Male"]
         </button>
         <button type="button"
                 class="btn  @(!Model.Male ? "btn-secondary" : "btn-light")"
-                aria-label="Female"
+                aria-label="@localizer["Female"]"
                 @onclick="() => { Model.Male = false; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
             @localizer["Female"]
         </button>
