@@ -24,10 +24,10 @@
             @switch (ActiveTab)
             {
                 case "USNavy":
-                    <USNavyComponent @bind-Male="Male" />
+                    <USNavyComponent @bind-Male="dataService.Male" @bind-Model="dataService.USNavy" />
                     break;
                 case "JacksonAndPollock3SiteSkinFold":
-                    <JacksonAndPollock3SiteSkinFoldComponent @bind-Male="Male" />
+                    <JacksonAndPollock3SiteSkinFoldComponent @bind-Male="dataService.Male" @bind-Model="dataService.JacksonAndPollock3SiteSkinFold" />
                     break;
                 case "Body Fat Percentages":
                     <FatPercentageTableComponent />
@@ -38,8 +38,6 @@
 </div>
 
 @code {
-    private bool Male { get; set; } = true;
-
     private List<string> Tabs { get; set; } = new List<string> {
         "USNavy",
         "JacksonAndPollock3SiteSkinFold",

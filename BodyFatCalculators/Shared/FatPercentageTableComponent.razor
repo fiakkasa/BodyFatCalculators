@@ -8,31 +8,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>@localizer["Essential Fat"]</td>
-                <td>2-5%</td>
-                <td>10-13%</td>
-            </tr>
-            <tr>
-                <td>@localizer["Athlete"]</td>
-                <td>6-13%</td>
-                <td>14-20%</td>
-            </tr>
-            <tr>
-                <td>@localizer["Fitness"]</td>
-                <td>14-17%</td>
-                <td>21-24%</td>
-            </tr>
-            <tr>
-                <td>@localizer["Acceptable"]</td>
-                <td>18-24%</td>
-                <td>25-31%</td>
-            </tr>
-            <tr>
-                <td>@localizer["Obese"]</td>
-                <td>>25%</td>
-                <td>>32%</td>
-            </tr>
+            @foreach (var (key, value) in dataService.FatPercentageTable)
+            {
+                <tr>
+                    <td>@localizer[key]</td>
+                    <td>@string.Format(value.maleMax >= 100 ? ">{0:P0}" : "{0:P0}-{1:P0}", value.maleMin / 100, value.maleMax / 100).Replace(" ", "")</td>
+                    <td>@string.Format(value.femaleMax >= 100 ? ">{0:P0}" : "{0:P0}-{1:P0}", value.femaleMin / 100, value.femaleMax / 100).Replace(" ", "")</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
