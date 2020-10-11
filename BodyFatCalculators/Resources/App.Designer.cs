@@ -160,6 +160,15 @@ namespace BodyFatCalculators.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fitness.
         /// </summary>
         public static string Fitness {
@@ -219,6 +228,15 @@ namespace BodyFatCalculators.Resources {
         public static string JacksonAndPollock3SiteSkinFold {
             get {
                 return ResourceManager.GetString("JacksonAndPollock3SiteSkinFold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
             }
         }
         

@@ -1,14 +1,22 @@
-﻿@page "/"
+﻿@inject LanguageService languageService
+@implements IDisposable
+@page "/"
 
 <style type="text/css">
     .index {
-        width: 40rem;
+        width: 50rem;
     }
 </style>
 
 <div class="index card mw-100 mx-auto mt-1 mb-5">
     <div class="card-body">
-        <h5 class="card-title">@localizer["Body Fat Calculator"]</h5>
+        <h5 class="card-title d-flex flex-wrap align-items-center justify">
+            <span class="mr-2 text-truncate">
+                @localizer["Body Fat Calculator"]
+            </span>
+            <span class="flex-fill"></span>
+            <LanguageSwitcherComponent class="btn-group-sm" />
+        </h5>
         <div class="card-text">
             <div class="d-flex flex-wrap mb-2" role="group">
                 @foreach (var item in Tabs)
@@ -48,7 +56,13 @@
 
     protected override void OnInitialized()
     {
+        languageService.OnCultureChange += StateHasChanged;
         ActiveTab = Tabs.First();
         base.OnInitialized();
+    }
+
+    public void Dispose()
+    {
+        languageService.OnCultureChange -= StateHasChanged;
     }
 }

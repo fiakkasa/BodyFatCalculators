@@ -1,0 +1,30 @@
+﻿@inject LanguageService languageService
+
+<div class="btn-group @CssClass" role="group">
+    @foreach (var culture in languageService.SupportedCultures)
+    {
+        <button type="button" class="btn @ButtonCssClass @(culture.Name == languageService.Culture.Name ? ButtonActiveCssClass : ButtonInactiveCssClass)"
+                @onclick="() => languageService.Culture = culture">
+            @culture.NativeName
+        </button>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string ButtonCssClass { get; set; } = "";
+
+    [Parameter]
+    public string ButtonActiveCssClass { get; set; } = "btn-secondary";
+
+    [Parameter]
+    public string ButtonInactiveCssClass { get; set; } = "btn-light";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? InputAttributes { get; set; }
+
+    private string CssClass =>
+        InputAttributes != null && InputAttributes.ContainsKey("class") && InputAttributes["class"] is string cssClass
+            ? cssClass
+            : "";
+}

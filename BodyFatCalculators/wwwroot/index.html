@@ -8,6 +8,12 @@
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css?v=4.5.2" rel="stylesheet" />
     <link href="css/app.css?v=1" rel="stylesheet" />
+    <script type="text/javascript">
+        window.blazorCulture = {
+            get: () => window.localStorage['BlazorCulture'],
+            set: (value) => window.localStorage['BlazorCulture'] = value
+        };
+    </script>
 </head>
 
 <body>

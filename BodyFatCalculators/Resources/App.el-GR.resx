@@ -121,87 +121,87 @@
     <value>404</value>
   </data>
   <data name="Abdomen (mm)" xml:space="preserve">
-    <value>Abdomen (mm)</value>
+    <value>Κοιλιά (χιλ.)</value>
   </data>
   <data name="Acceptable" xml:space="preserve">
-    <value>Acceptable</value>
+    <value>Αποδεκτό</value>
   </data>
   <data name="Age" xml:space="preserve">
-    <value>Age</value>
+    <value>Ηλικία</value>
   </data>
   <data name="Athlete" xml:space="preserve">
-    <value>Athlete</value>
+    <value>Αθλητής</value>
   </data>
   <data name="Body Fat Calculator" xml:space="preserve">
-    <value>Body Fat Calculator</value>
+    <value>Υπολογιστής Σωματικού Λίπους</value>
   </data>
   <data name="Body Fat Percentages" xml:space="preserve">
-    <value>Body Fat Percentages</value>
+    <value>Ποσοστά Σωματικού Λίπους</value>
   </data>
   <data name="Chest (mm)" xml:space="preserve">
-    <value>Chest (mm)</value>
+    <value>Στήθος (χιλ.)</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Περιγραφή</value>
   </data>
   <data name="Essential Fat" xml:space="preserve">
-    <value>Essential Fat</value>
+    <value>Απαραίτητο Λίπος</value>
   </data>
   <data name="Fat" xml:space="preserve">
-    <value>Fat</value>
+    <value>Λίπος</value>
   </data>
   <data name="Female" xml:space="preserve">
-    <value>Female</value>
+    <value>Γυναίκες</value>
   </data>
   <data name="Fitness" xml:space="preserve">
-    <value>Fitness</value>
+    <value>Καλή Φυσική Κατάσταση</value>
   </data>
   <data name="Gender" xml:space="preserve">
-    <value>Gender</value>
+    <value>Γένος</value>
   </data>
   <data name="Go Home?" xml:space="preserve">
-    <value>Go Home?</value>
+    <value>Προς Αρχική σελίδα;</value>
   </data>
   <data name="Height (cm)" xml:space="preserve">
-    <value>Height (cm)</value>
+    <value>Ύψος (εκ.)</value>
   </data>
   <data name="Hip (mm)" xml:space="preserve">
-    <value>Hip (mm)</value>
+    <value>Γόφος (χιλ.)</value>
   </data>
   <data name="Hips (cm)" xml:space="preserve">
-    <value>Hips (cm)</value>
+    <value>Γοφοί (εκ.)</value>
   </data>
   <data name="JacksonAndPollock3SiteSkinFold" xml:space="preserve">
-    <value>Caliper (3 Site)</value>
+    <value>Δαγκάνα (3 Σημεία)</value>
   </data>
   <data name="Male" xml:space="preserve">
-    <value>Male</value>
+    <value>Άνδρες</value>
   </data>
   <data name="Men" xml:space="preserve">
-    <value>Men</value>
+    <value>Άνδρες</value>
   </data>
   <data name="Naval (cm)" xml:space="preserve">
-    <value>Naval (cm)</value>
+    <value>Kοιλιακή Xώρα (εκ.)</value>
   </data>
   <data name="Neck (cm)" xml:space="preserve">
-    <value>Neck (cm)</value>
+    <value>Λαιμός (εκ.)</value>
   </data>
   <data name="Obese" xml:space="preserve">
-    <value>Obese</value>
+    <value>Παχυσαρκία</value>
   </data>
   <data name="Sorry, there's nothing at this address..." xml:space="preserve">
-    <value>Sorry, there's nothing at this address...</value>
+    <value>Δυστυχώς, δεν υπάρχει τίποτα σε αυτή τη διεύθυνση...</value>
   </data>
   <data name="Thigh (mm)" xml:space="preserve">
-    <value>Thigh (mm)</value>
+    <value>Μηρός (χιλ.)</value>
   </data>
   <data name="Tricep (mm)" xml:space="preserve">
-    <value>Tricep (mm)</value>
+    <value>Τρικέφαλος (χιλ.)</value>
   </data>
   <data name="USNavy" xml:space="preserve">
-    <value>US Navy</value>
+    <value>Ναυτικό ΗΠΑ</value>
   </data>
   <data name="Women" xml:space="preserve">
-    <value>Women</value>
+    <value>Γυναίκες</value>
   </data>
 </root>

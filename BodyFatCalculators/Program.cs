@@ -13,9 +13,14 @@ namespace BodyFatCalculators
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddSingleton<DataService>();
+            builder.Services.AddSingleton<LanguageService>();
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            await builder.Build().RunAsync().ConfigureAwait(true);
+            var host = builder.Build();
+
+            await host.Services.GetRequiredService<LanguageService>().Init().ConfigureAwait(true);
+
+            await host.RunAsync().ConfigureAwait(true);
         }
     }
 }

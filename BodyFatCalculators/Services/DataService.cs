@@ -11,7 +11,7 @@ namespace BodyFatCalculators.Services
 
         public JacksonAndPollock3SiteSkinFoldModel JacksonAndPollock3SiteSkinFold { get; set; } = new JacksonAndPollock3SiteSkinFoldModel { Male = true };
 
-        public Dictionary<string, (double maleMin, double maleMax, double femaleMin, double femaleMax)> FatPercentageTable { get; set; } =
+        public Dictionary<string, (double maleMin, double maleMax, double femaleMin, double femaleMax)> FatPercentageTable { get; } =
            new Dictionary<string, (double maleMin, double maleMax, double femaleMin, double femaleMax)>
            {
                ["Essential Fat"] = (maleMin: 2, maleMax: 5, femaleMin: 10, femaleMax: 13),
