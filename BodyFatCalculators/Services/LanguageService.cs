@@ -20,7 +20,7 @@ namespace BodyFatCalculators.Services
 
         public CultureInfo Culture
         {
-            get => CultureInfo.CurrentCulture;
+            get => CultureInfo.DefaultThreadCurrentCulture;
             set
             {
                 var culture =
@@ -47,10 +47,33 @@ namespace BodyFatCalculators.Services
 
         public async Task Init()
         {
-            Culture =
+
+#pragma warning disable S1135 // Track uses of "TODO" tags
+#pragma warning disable S125 // Sections of code should not be commented out
+            // todo: restore
+            //Culture = 
+            //    await _js.InvokeAsync<string>("blazorCulture.get").ConfigureAwait(true) is string storedCulture
+            //        ? new CultureInfo(storedCulture)
+
+            //        : SupportedCultures[0];
+#pragma warning restore S125 // Sections of code should not be commented out
+
+            // todo: remove
+            // workaround for loading secondary language
+            var culture =
                 await _js.InvokeAsync<string>("blazorCulture.get").ConfigureAwait(true) is string storedCulture
                     ? new CultureInfo(storedCulture)
                     : SupportedCultures[0];
+
+            var tempCulture = SupportedCultures.Last();
+
+            CultureInfo.DefaultThreadCurrentCulture = tempCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = tempCulture;
+
+            if (tempCulture.Name != culture.Name)
+                _ = Task.Delay(100).ContinueWith((_) => Culture = culture);
+            ///////////////////////////////////////////////////////////////
+#pragma warning restore S1135 // Track uses of "TODO" tags
         }
     }
 }

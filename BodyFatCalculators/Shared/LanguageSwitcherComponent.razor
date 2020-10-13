@@ -1,4 +1,5 @@
 ﻿@inject LanguageService languageService
+@implements IDisposable
 
 <div class="btn-group @CssClass" role="group">
     @foreach (var culture in languageService.SupportedCultures)
@@ -27,4 +28,14 @@
         InputAttributes != null && InputAttributes.ContainsKey("class") && InputAttributes["class"] is string cssClass
             ? cssClass
             : "";
+
+    protected override void OnInitialized()
+    {
+        languageService.OnCultureChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        languageService.OnCultureChange -= StateHasChanged;
+    }
 }
