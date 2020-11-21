@@ -1,5 +1,5 @@
-﻿app {
-    background-image: url(images/wallpaper.jpg);
+﻿#app {
+    background-image: url(./images/wallpaper.jpg);
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;

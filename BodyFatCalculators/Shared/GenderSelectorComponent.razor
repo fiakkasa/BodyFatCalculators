@@ -1,0 +1,16 @@
+﻿<label>
+    @localizer["Gender"]
+</label>
+<div class="mb-3">
+    <div class="btn-group" role="group" aria-label="@localizer["Gender"]">
+        @foreach (var item in Enum.GetValues<GenderType>())
+        {
+            <button type="button"
+                    class="btn @(dataService.Gender == item ? "btn-secondary" : "btn-light")"
+                    aria-label="@localizer[Enum.GetName<GenderType>(item) ?? ""]"
+                    @onclick="() => { dataService.Gender = item; }">
+                @localizer[Enum.GetName<GenderType>(item) ?? ""]
+            </button>
+        }
+    </div>
+</div>

@@ -1,23 +1,26 @@
-﻿@if (GetFatPercentageBracket(Male, FatPercentage) is string bracket && bracket != "")
+﻿@if (GetFatPercentageBracket(Gender, FatPercentage) is string bracket && bracket != "")
 {
     @localizer[bracket]
 }
 
 @code {
-    [Parameter] public bool Male { get; set; }
+    [Parameter] public GenderType Gender { get; set; }
 
     [Parameter] public double FatPercentage { get; set; }
 
-    private string GetFatPercentageBracket(bool male, double fatPercentage) =>
+    private string GetFatPercentageBracket(GenderType gender, double fatPercentage) =>
        Math.Floor(fatPercentage * 100) is double percentage &&
        dataService.FatPercentageTable
            .Where(x =>
            {
                var (maleMin, maleMax, femaleMin, femaleMax) = x.Value;
 
-               return male
-                   ? percentage >= maleMin && percentage <= maleMax
-                   : percentage >= femaleMin && percentage <= femaleMax;
+               return gender switch
+               {
+                   GenderType.Male => percentage >= maleMin && percentage <= maleMax,
+                   GenderType.Female => percentage >= femaleMin && percentage <= femaleMax,
+                   _ => false
+               };
            })
            .Select(x => x.Key)
            .FirstOrDefault() is string bracket

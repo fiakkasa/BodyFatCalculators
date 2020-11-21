@@ -1,6 +1,7 @@
-﻿@inject LanguageService languageService
+﻿@inject NavigationManager navigationManager
 @implements IDisposable
 @page "/"
+@page "/{ActiveTab}"
 
 <style type="text/css">
     .index {
@@ -14,30 +15,30 @@
             <span class="mr-2 text-truncate">
                 @localizer["Body Fat Calculator"]
             </span>
-            <span class="flex-fill"></span>
-            <LanguageSwitcherComponent class="btn-group-sm" />
         </h5>
         <div class="card-text">
             <div class="d-flex flex-wrap mb-2" role="group">
                 @foreach (var item in Tabs)
                 {
-                    <button type="button"
-                            class="flex-fill btn text-truncate @(item == ActiveTab ? "btn-primary" : "btn-light text-dark")"
-                            @onclick="() => { ActiveTab = item; }">
+                    <a href="@item" class="flex-fill btn text-truncate @(item == ActiveTab ? "btn-primary" : "btn-light text-dark")">
                         @localizer[item]
-                    </button>
+                    </a>
                 }
             </div>
 
             @switch (ActiveTab)
             {
                 case "USNavy":
-                    <USNavyComponent @bind-Male="dataService.Male" @bind-Model="dataService.USNavy" />
+                    <GenderSelectorComponent />
+                    <USNavyComponent @bind-Model="dataService.USNavy" />
                     break;
+
                 case "JacksonAndPollock3SiteSkinFold":
-                    <JacksonAndPollock3SiteSkinFoldComponent @bind-Male="dataService.Male" @bind-Model="dataService.JacksonAndPollock3SiteSkinFold" />
+                    <GenderSelectorComponent />
+                    <JacksonAndPollock3SiteSkinFoldComponent @bind-Model="dataService.JacksonAndPollock3SiteSkinFold" />
                     break;
-                case "Body Fat Percentages":
+
+                case "BodyFatPercentages":
                     <FatPercentageTableComponent />
                     break;
             }
@@ -46,23 +47,25 @@
 </div>
 
 @code {
-    private List<string> Tabs { get; set; } = new List<string> {
+    private List<string> Tabs { get; init; } = new List<string> {
         "USNavy",
         "JacksonAndPollock3SiteSkinFold",
-        "Body Fat Percentages"
+        "BodyFatPercentages"
     };
 
-    private string ActiveTab { get; set; } = "";
+    [ParameterAttribute] public string ActiveTab { get; set; } = "";
 
     protected override void OnInitialized()
     {
-        languageService.OnCultureChange += StateHasChanged;
-        ActiveTab = Tabs.First();
+        if (!Tabs.Contains(ActiveTab)) navigationManager.NavigateTo(Tabs.First());
+
+        dataService.OnGenderChanged += StateHasChanged;
+
         base.OnInitialized();
     }
 
     public void Dispose()
     {
-        languageService.OnCultureChange -= StateHasChanged;
+        dataService.OnGenderChanged -= StateHasChanged;
     }
 }

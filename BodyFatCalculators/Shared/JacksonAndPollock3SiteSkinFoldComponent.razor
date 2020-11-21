@@ -1,24 +1,4 @@
 ﻿<label>
-    @localizer["Gender"]
-</label>
-<div class="mb-3">
-    <div class="btn-group" role="group" aria-label="@localizer["Gender"]">
-        <button type="button"
-                class="btn @(Model.Male ? "btn-secondary" : "btn-light")"
-                aria-label="@localizer["Male"]"
-                @onclick="() => { Model.Male = true; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
-            @localizer["Male"]
-        </button>
-        <button type="button"
-                class="btn  @(!Model.Male ? "btn-secondary" : "btn-light")"
-                aria-label="@localizer["Female"]"
-                @onclick="() => { Model.Male = false; ModelChanged.InvokeAsync(Model); MaleChanged.InvokeAsync(Model.Male); }">
-            @localizer["Female"]
-        </button>
-    </div>
-</div>
-
-<label>
     @localizer["Age"]
 </label>
 <div class="input-group mb-3">
@@ -33,7 +13,7 @@
            @onchange="() => ModelChanged.InvokeAsync(Model)" />
 </div>
 
-@if (Model.Male)
+@if (Model.Gender == GenderType.Male)
 {
     <label>
         @localizer["Chest (mm)"]
@@ -65,7 +45,7 @@
                @onchange="() => ModelChanged.InvokeAsync(Model)" />
     </div>
 }
-else
+else if (Model.Gender == GenderType.Female)
 {
     <label>
         @localizer["Hip (mm)"]
@@ -99,41 +79,28 @@ else
 
 }
 
-<label>
-    @localizer["Thigh (mm)"]
-</label>
-<div class="input-group mb-3">
-    <input type="number"
-           class="form-control @(Model.ThighMmValid ? "is-valid" : "is-invalid")"
-           placeholder="@localizer["Thigh (mm)"]"
-           aria-label="@localizer["Thigh (mm)"]"
-           min="@Model.ThighMmMinMax.min"
-           max="@Model.ThighMmMinMax.max"
-           @bind="Model.ThighMm"
-           @bind:event="oninput"
-           @onchange="() => ModelChanged.InvokeAsync(Model)" />
-</div>
+@if (Model.Gender == GenderType.Male || Model.Gender == GenderType.Female)
+{
+    <label>
+        @localizer["Thigh (mm)"]
+    </label>
+    <div class="input-group mb-3">
+        <input type="number"
+               class="form-control @(Model.ThighMmValid ? "is-valid" : "is-invalid")"
+               placeholder="@localizer["Thigh (mm)"]"
+               aria-label="@localizer["Thigh (mm)"]"
+               min="@Model.ThighMmMinMax.min"
+               max="@Model.ThighMmMinMax.max"
+               @bind="Model.ThighMm"
+               @bind:event="oninput"
+               @onchange="() => ModelChanged.InvokeAsync(Model)" />
+    </div>
+}
 
-
-<h5 class="m-0 py-1 text-dark">
-    @string.Format("{0}: {1:P2}", localizer["Fat"], Model.FatPercentage)
-    <small>
-        <FatPercentageBracketComponent Male="@Model.Male" FatPercentage="@Model.FatPercentage" />
-    </small>
-</h5>
+<FatPercentageAndBracketComponent Gender="@Model.Gender" FatPercentage="@Model.FatPercentage" />
 
 @code {
-    [Parameter] public bool? Male { get; set; }
-
-    [Parameter] public EventCallback<bool> MaleChanged { get; set; }
-
     [Parameter] public JacksonAndPollock3SiteSkinFoldModel Model { get; set; } = new JacksonAndPollock3SiteSkinFoldModel();
 
     [Parameter] public EventCallback<JacksonAndPollock3SiteSkinFoldModel> ModelChanged { get; set; }
-
-    protected override void OnParametersSet()
-    {
-        if (Male.HasValue) Model.Male = Male.Value;
-        base.OnParametersSet();
-    }
 }

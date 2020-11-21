@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BodyFatCalculators.Enums;
+using System;
 
 namespace BodyFatCalculators.Models
 {
     public class USNavyModel
     {
-        public bool Male { get; set; }
+        public GenderType Gender { get; set; }
 
         public (int min, int max) HeightCmMinMax => (min: 50, max: 300);
 
@@ -36,9 +37,9 @@ namespace BodyFatCalculators.Models
             {
                 var result =
                     Math.Round(
-                        Male switch
+                        Gender switch
                         {
-                            true when HeightCmValid && NavalCmValid && NeckCmValid =>
+                            GenderType.Male when HeightCmValid && NavalCmValid && NeckCmValid =>
                             (
                                 495 /
                                 (
@@ -48,7 +49,7 @@ namespace BodyFatCalculators.Models
                                 )
                                 - 450
                             ),
-                            false when HeightCmValid && NavalCmValid && NeckCmValid && HipsCmValid =>
+                            GenderType.Female when HeightCmValid && NavalCmValid && NeckCmValid && HipsCmValid =>
                             (
                                 495 /
                                 (

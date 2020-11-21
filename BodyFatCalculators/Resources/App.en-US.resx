@@ -135,7 +135,7 @@
   <data name="Body Fat Calculator" xml:space="preserve">
     <value>Body Fat Calculator</value>
   </data>
-  <data name="Body Fat Percentages" xml:space="preserve">
+  <data name="BodyFatPercentages" xml:space="preserve">
     <value>Body Fat Percentages</value>
   </data>
   <data name="Chest (mm)" xml:space="preserve">
@@ -144,7 +144,7 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="Essential Fat" xml:space="preserve">
+  <data name="EssentialFat" xml:space="preserve">
     <value>Essential Fat</value>
   </data>
   <data name="Fat" xml:space="preserve">

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BodyFatCalculators.Enums;
+using System;
 
 namespace BodyFatCalculators.Models
 {
     public class JacksonAndPollock3SiteSkinFoldModel
     {
-        public bool Male { get; set; }
+        public GenderType Gender { get; set; }
 
         public (int min, int max) AgeMinMax => (min: 10, max: 70);
 
@@ -50,9 +51,9 @@ namespace BodyFatCalculators.Models
 
                 var result =
                     Math.Round(
-                        Male switch
+                        Gender switch
                         {
-                            true when ChestMmValid && AbdomenMmValid && ThighMmValid =>
+                            GenderType.Male when ChestMmValid && AbdomenMmValid && ThighMmValid =>
                             (
                                 495 /
                                 (
@@ -63,7 +64,7 @@ namespace BodyFatCalculators.Models
                                 )
                                 - 450
                             ),
-                            false when HipMmValid && TricepMmValid && ThighMmValid =>
+                            GenderType.Female when HipMmValid && TricepMmValid && ThighMmValid =>
                             (
                                 495 /
                                 (

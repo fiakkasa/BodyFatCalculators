@@ -1,0 +1,13 @@
+﻿<h5 class="m-0 py-1 text-dark">
+    @string.Format("{0}: {1:P2}", localizer["Fat"], FatPercentage)
+    <small>
+        <FatPercentageBracketComponent Gender="@Gender" FatPercentage="@FatPercentage" />
+    </small>
+</h5>
+
+
+@code {
+    [Parameter] public GenderType Gender { get; set; }
+
+    [Parameter] public double FatPercentage { get; set; }
+}
