@@ -8,8 +8,8 @@
                class="form-control @(Model.HeightCmValid ? "is-valid" : "is-invalid")"
                placeholder="@localizer["Height (cm)"]"
                aria-label="@localizer["Height (cm)"]"
-               min="@Model.HeightCmMinMax.min"
-               max="@Model.HeightCmMinMax.max"
+               min="@USNavyModel.HeightCmMinMax.min"
+               max="@USNavyModel.HeightCmMinMax.max"
                @bind="Model.HeightCm"
                @bind:event="oninput"
                @onchange="() => ModelChanged.InvokeAsync(Model)" />
@@ -23,8 +23,8 @@
                class="form-control @(Model.NavalCmValid ? "is-valid" : "is-invalid")"
                placeholder="@localizer["Naval (cm)"]"
                aria-label="@localizer["Naval (cm)"]"
-               min="@Model.NavalCmMinMax.min"
-               max="@Model.NavalCmMinMax.max"
+               min="@USNavyModel.NavalCmMinMax.min"
+               max="@USNavyModel.NavalCmMinMax.max"
                @bind="Model.NavalCm"
                @bind:event="oninput"
                @onchange="() => ModelChanged.InvokeAsync(Model)" />
@@ -38,8 +38,8 @@
                class="form-control @(Model.NeckCmValid ? "is-valid" : "is-invalid")"
                placeholder="@localizer["Neck (cm)"]"
                aria-label="@localizer["Neck (cm)"]"
-               min="@Model.NeckMinMax.min"
-               max="@Model.NeckMinMax.max"
+               min="@USNavyModel.NeckMinMax.min"
+               max="@USNavyModel.NeckMinMax.max"
                @bind="Model.NeckCm"
                @bind:event="oninput"
                @onchange="() => ModelChanged.InvokeAsync(Model)" />
@@ -56,8 +56,8 @@
                class="form-control @(Model.HipsCmValid ? "is-valid" : "is-invalid")"
                placeholder="@localizer["Hips (cm)"]"
                aria-label="@localizer["Hips (cm)"]"
-               min="@Model.HipsCmMinMax.min"
-               max="@Model.HipsCmMinMax.max"
+               min="@USNavyModel.HipsCmMinMax.min"
+               max="@USNavyModel.HipsCmMinMax.max"
                @bind="Model.HipsCm"
                @bind:event="oninput"
                @onchange="() => ModelChanged.InvokeAsync(Model)" />

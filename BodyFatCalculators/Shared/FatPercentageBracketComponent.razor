@@ -10,7 +10,7 @@
 
     private string GetFatPercentageBracket(GenderType gender, double fatPercentage) =>
        Math.Floor(fatPercentage * 100) is double percentage &&
-       dataService.FatPercentageTable
+       DataService.FatPercentageTable
            .Where(x =>
            {
                var (maleMin, maleMax, femaleMin, femaleMax) = x.Value;
