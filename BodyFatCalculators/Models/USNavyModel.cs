@@ -7,25 +7,25 @@ namespace BodyFatCalculators.Models
     {
         public GenderType Gender { get; set; }
 
-        public static (int min, int max) HeightCmMinMax => (min: 50, max: 300);
+        public static (double min, double max) HeightCmMinMax => (min: 50, max: 300);
 
         public double HeightCm { get; set; }
 
         public bool HeightCmValid => HeightCm >= HeightCmMinMax.min && HeightCm <= HeightCmMinMax.max;
 
-        public static (int min, int max) NavalCmMinMax => (min: 50, max: 300);
+        public static (double min, double max) NavalCmMinMax => (min: 50, max: 300);
 
         public double NavalCm { get; set; }
 
         public bool NavalCmValid => NavalCm >= NavalCmMinMax.min && NavalCm <= NavalCmMinMax.max;
 
-        public static (int min, int max) NeckMinMax => (min: 10, max: 100);
+        public static (double min, double max) NeckMinMax => (min: 10, max: 100);
 
         public double NeckCm { get; set; }
 
         public bool NeckCmValid => NeckCm >= NeckMinMax.min && NeckCm <= NeckMinMax.max;
 
-        public static (int min, int max) HipsCmMinMax => (min: 50, max: 300);
+        public static (double min, double max) HipsCmMinMax => (min: 50, max: 300);
 
         public double HipsCm { get; set; }
 

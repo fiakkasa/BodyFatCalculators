@@ -7,37 +7,37 @@ namespace BodyFatCalculators.Models
     {
         public GenderType Gender { get; set; }
 
-        public static (int min, int max) AgeMinMax => (min: 10, max: 70);
+        public static (double min, double max) AgeMinMax => (min: 10, max: 70);
 
         public double Age { get; set; }
 
         public bool AgeValid => Age >= AgeMinMax.min && Age <= AgeMinMax.max;
 
-        public static (int min, int max) ChestMmMinMax => (min: 1, max: 50);
+        public static (double min, double max) ChestMmMinMax => (min: 1, max: 50);
 
         public double ChestMm { get; set; }
 
         public bool ChestMmValid => ChestMm >= ChestMmMinMax.min && ChestMm <= ChestMmMinMax.max;
 
-        public static (int min, int max) AbdomenMmMinMax => (min: 1, max: 50);
+        public static (double min, double max) AbdomenMmMinMax => (min: 1, max: 50);
 
         public double AbdomenMm { get; set; }
 
         public bool AbdomenMmValid => AbdomenMm >= AbdomenMmMinMax.min && AbdomenMm <= AbdomenMmMinMax.max;
 
-        public static (int min, int max) HipMmMinMax => (min: 1, max: 50);
+        public static (double min, double max) HipMmMinMax => (min: 1, max: 50);
 
         public double HipMm { get; set; }
 
         public bool HipMmValid => HipMm >= HipMmMinMax.min && HipMm <= HipMmMinMax.max;
 
-        public static (int min, int max) TricepMmMinMax => (min: 1, max: 50);
+        public static (double min, double max) TricepMmMinMax => (min: 1, max: 50);
 
         public double TricepMm { get; set; }
 
         public bool TricepMmValid => TricepMm >= TricepMmMinMax.min && TricepMm <= TricepMmMinMax.max;
 
-        public static (int min, int max) ThighMmMinMax => (min: 1, max: 50);
+        public static (double min, double max) ThighMmMinMax => (min: 1, max: 50);
 
         public double ThighMm { get; set; }
 
